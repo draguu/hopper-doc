@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Game Prop Texturing Addon Documentation</title>
+<!-- Google Fonts: Roboto Rounded for friendly look -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Rounded:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+--primary-color: #2196f3;
+--primary-light: #bbdefb;
+--green: #4caf50;
+--orange: #ff9800;
+--yellow: #ffeb3b;
+--surface-color: #ffffff;
+--background-color: #f5f5f5;
+--text-color: #333;
+--border-color: #e0e0e0;
+--hover-color: #e3f2fd;
+--active-color: #ffccbc;
+--corner-radius: 16px;
+}
+* {
+box-sizing: border-box;
+}
+body {
+margin: 0;
+font-family: 'Roboto Rounded', Arial, sans-serif;
+display: flex;
+min-height: 100vh;
+background: var(--background-color);
+color: var(--text-color);
+}
+nav {
+width: 260px;
+background: var(--surface-color);
+border-right: 2px solid var(--border-color);
+position: sticky;
+top: 0;
+height: 100vh;
+overflow-y: auto;
+display: flex;
+flex-direction: column;
+padding: 1rem 0.5rem;
+}
+nav h2 {
+margin: 0 0 1rem 1.2rem;
+font-weight: 700;
+font-size: 1.3rem;
+color: var(--primary-color);
+letter-spacing: 0.05em;
+}
+nav ul {
+list-style: none;
+margin: 0 1rem;
+padding: 0;
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+}
+nav li {
+border-radius: var(--corner-radius);
+margin-bottom: 2px;
+}
+nav button {
+background: none;
+border: none;
+padding: 0.65rem 1.1rem;
+width: 100%;
+color: var(--text-color);
+font-size: 1rem;
+border-radius: var(--corner-radius);
+cursor: pointer;
+transition: background 0.2s, color 0.2s;
+font-family: 'Roboto Rounded', Arial, sans-serif;
+font-weight: 500;
+text-align: left;
+}
+nav button:hover {
+background: var(--hover-color);
+color: var(--primary-color);
+}
+nav button.active {
+background: var(--primary-light);
+color: var(--primary-color);
+font-weight: 700;
+}
+main {
+flex: 1;
+padding: 2rem 2.5rem;
+background: var(--background-color);
+overflow-y: auto;
+}
+main h1 {
+font-size: 2rem;
+font-weight: 700;
+color: var(--primary-color);
+margin-bottom: 1rem;
+border-radius: var(--corner-radius);
+padding: 0.2rem 0.8rem;
+background: var(--primary-light);
+display: inline-block;
+}
+main h2 {
+font-size: 1.35rem;
+color: var(--green);
+margin-top: 1.5rem;
+margin-bottom: 0.55rem;
+font-weight: 700;
+}
+main p {
+font-size: 1.08rem;
+line-height: 1.65;
+margin-bottom: 1.2rem;
+max-width: 700px;
+}
+main ul {
+font-size: 1.08rem;
+line-height: 1.65;
+margin-bottom: 1.2rem;
+max-width: 700px;
+}
+main ul li {
+margin-bottom: 0.5rem;
+}
+main img, main video, main iframe {
+max-width: 600px;
+width: 100%;
+border-radius: var(--corner-radius);
+background: var(--surface-color);
+display: block;
+margin: 1.2rem 0;
+box-shadow: 0 0 2px var(--border-color);
+}
+@media (max-width: 800px) {
+nav {
+width: 180px;
+}
+main {
+padding: 1rem;
+}
+}
+@media (max-width: 600px) {
+body {
+flex-direction: column;
+}
+nav {
+width: 100%;
+height: auto;
+position: static;
+border-right: none;
+border-bottom: 2px solid var(--border-color);
+}
+}
+</style>
+</head>
+<body>
+<nav>
+<h2>Atlas Addon Docs</h2>
+<ul>
+<li><button class="active" onclick="showCat('installation')">Installation</button></li>
+<li><button onclick="showCat('overview')">Overview</button></li>
+<li><button onclick="showCat('workflow')">Workflow</button></li>
+<li><button onclick="showCat('color-palettes')">Color Palettes</button></li>
+<li><button onclick="showCat('gradient-maps')">Gradient Maps</button></li>
+<li><button onclick="showCat('limitations')">Limitations</button></li>
+</ul>
+</nav>
+<main>
+<section id="installation" style="display:block;">
+<h1>Installation</h1>
+<p>Install the addon from Blender Preferences: just choose 'Install', select the ZIP or folder, and enable it from the Add-ons tab under the "UV" category.</p>
+<p>No special dependencies required. Compatible with the latest Blender versions.</p>
+<!-- Replace the src with your Giphy GIF URL (right-click on Giphy GIF > Copy Image Address) -->
+<img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="Installation GIF" />
+</section>
+
+<section id="overview" style="display:none;">
+<h1>Overview</h1>
+<h2>Addon Panel Features</h2>
+<p>
+The main panel includes:<br/>
+<b>Setup Material</b> – Instantly applies the atlas texture to your mesh.<br/>
+<b>Unwrap</b> – Unwrap selected faces to the chosen tile.<br/>
+<b>Setup Viewport</b> – Enable preview thumbnails for your atlas images.<br/>
+<b>Hotkeys</b> – Fast access for common actions, all shown in the panel.
+</p>
+<!-- Replace with your own Giphy URLs -->
+<img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" alt="Panel Overview GIF" />
+</section>
+
+<section id="workflow" style="display:none;">
+<h1>Workflow</h1>
+
+<h2>Pick Tiles</h2>
+<p>Select and assign specific tiles from your atlas palette to your mesh for precise texturing control.</p>
+<!-- Example Giphy embed - replace with your GIF URL -->
+<img src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" alt="Pick Tiles GIF" />
+
+<h2>Randomize Tiles</h2>
+<p>Automatically assign random tiles from your atlas to create natural variation and avoid repetition in textures.</p>
+<img src="https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" alt="Randomize Tiles GIF" />
+
+<h2>Scale</h2>
+<p>Scale UVs inside a tile for best fit using smooth interactive controls.</p>
+<img src="https://media.giphy.com/media/3oKIPEqDGUULpEU0aQ/giphy.gif" alt="Scale GIF" />
+
+<h2>Move</h2>
+<p>Move UVs to fine-tune positions. Live preview allows drag-and-drop adjustments.</p>
+<img src="https://media.giphy.com/media/l0HlvtIPzPdt2usKs/giphy.gif" alt="Move GIF" />
+
+<h2>Rotate</h2>
+<p>Rotate UVs to align textures, with 90° snap and free rotation options.</p>
+<img src="https://media.giphy.com/media/3o6Zt6KHxJTbXCnSvu/giphy.gif" alt="Rotate GIF" />
+
+<h2>Highlight & Shadow</h2>
+<p>Apply highlight or shadow effects on UVs for subtle lighting and texture variation.</p>
+<img src="https://media.giphy.com/media/3o7btNa0RUYa5E7iiQ/giphy.gif" alt="Highlight GIF" />
+<img src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" alt="Shadow GIF" />
+</section>
+
+<section id="color-palettes" style="display:none;">
+<h1>Color Palettes</h1>
+<p>This addon comes bundled with 4 expertly crafted, ready-to-use color palettes designed to enhance your texturing workflow and inspire your creativity.</p>
+<p>Each palette features carefully selected colors optimized for game prop texturing, providing instant visual variety and professional results.</p>
+<!-- Replace with your color palette GIF -->
+<img src="https://media.giphy.com/media/3oKIPpFhwsMPRWTZUA/giphy.gif" alt="Color Palettes Preview" />
+</section>
+
+<section id="gradient-maps" style="display:none;">
+<h1>Gradient Maps</h1>
+<p>This addon includes a set of 3-4 vibrant gradient maps to enhance your texturing capabilities:</p>
+<ul>
+<li><b>Pastel Sunrise:</b> Soft warm colors perfect for subtle highlights.</li>
+<li><b>Cool Twilight:</b> Blues and purples for moody shadows and accents.</li>
+<li><b>Forest Glow:</b> Greens and yellows to simulate natural light effects.</li>
+<li><b>Sunset Blaze:</b> Intense reds and oranges for dramatic lighting.</li>
+</ul>
+<!-- Replace with your gradient maps GIF -->
+<img src="https://media.giphy.com/media/3oKIPgvPwXi2ZAIS5O/giphy.gif" alt="Gradient Maps Preview" />
+</section>
+
+<section id="limitations" style="display:none;">
+<h1>Limitations</h1>
+<p><b>One object supports a single atlas texture only.</b> Support for multiple atlases on the same object is <span style="color: var(--orange); font-weight: bold;">in development</span> and will be added in future versions.</p>
+<p>Some advanced Blender workflows may require custom scripting for full compatibility.</p>
+</section>
+</main>
+
+<script>
+function showCat(id) {
+const cats = ["installation","overview","workflow","color-palettes","gradient-maps","limitations"];
+cats.forEach(cat => {
+document.getElementById(cat).style.display = (cat === id) ? "block" : "none";
+});
+document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+const btnMatch = Array.from(document.querySelectorAll('nav button')).find(
+btn => btn.textContent.toLowerCase().replace(/[^a-z]/g,'') === id.replace(/-/g,'')
+);
+if(btnMatch) btnMatch.classList.add('active');
+}
+</script>
+</body>
+</html>
