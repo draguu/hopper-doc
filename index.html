@@ -153,7 +153,7 @@
       <li><button onclick="showCat('overview')">Overview</button></li>
       <li><button onclick="showCat('workflow')">Workflow</button></li>
       <li><button onclick="showCat('limitations')">Limitations</button></li>
-      <li><button onclick="showCat('gradient-maps')">Gradient Maps</button></li>
+      
     </ul>
   </nav>
   <main>
@@ -203,19 +203,9 @@
     <section id="limitations" style="display:none;">
       <h1>Limitations</h1>
       <p><b>One object supports a single atlas texture only.</b> Support for multiple atlases on the same object is <span style="color: var(--orange); font-weight: bold;">in development</span> and will be added in future versions.</p>
-      <p>Some advanced Blender workflows may require custom scripting for full compatibility.</p>
+     
     </section>
-    <section id="gradient-maps" style="display:none;">
-      <h1>Included Gradient Maps</h1>
-      <p>This addon includes a set of 3-4 vibrant gradient maps to enhance your texturing capabilities:</p>
-      <ul>
-        <li><b>Pastel Sunrise:</b> Soft warm colors perfect for subtle highlights.</li>
-        <li><b>Cool Twilight:</b> Blues and purples for moody shadows and accents.</li>
-        <li><b>Forest Glow:</b> Greens and yellows to simulate natural light effects.</li>
-        <li><b>Sunset Blaze:</b> Intense reds and oranges for dramatic lighting.</li>
-      </ul>
-      <img src="gradient-maps-preview.gif" alt="Gradient Maps Preview" />
-    </section>
+  
   </main>
   <script>
     function showCat(id) {
